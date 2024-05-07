@@ -1,0 +1,143 @@
+<!--
+
+=========================================================
+* Volt Free - Bootstrap 5 Dashboard
+=========================================================
+
+* Product Page: https://themesberg.com/product/admin-dashboard/volt-bootstrap-5-dashboard
+* Copyright 2021 Themesberg (https://www.themesberg.com)
+
+* Designed and coded by https://themesberg.com
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. Please contact us to request a removal. Contact us if you want to remove it.
+
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <!-- Primary Meta Tags -->
+    <title>
+        Taste Craft - Index
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="title" content="AI-Recipes">
+    <meta name="author" content="Themesberg & AppSeed | Transcendence Industries">
+    <meta name="description" content="">
+    <meta name="keywords" content=""/>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ config.ASSETS_ROOT }}/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ config.ASSETS_ROOT }}/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ config.ASSETS_ROOT }}/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="{{ config.ASSETS_ROOT }}/img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="{{ config.ASSETS_ROOT }}/img/favicon/safari-pinned-tab.svg" color="#ffffff">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- Sweet Alert -->
+    <link type="text/css" href="{{ config.ASSETS_ROOT }}/vendor/sweetalert2/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <!-- Notyf -->
+    <link type="text/css" href="{{ config.ASSETS_ROOT }}/vendor/notyf/notyf.min.css" rel="stylesheet">
+
+    <!-- Volt CSS -->
+    <link type="text/css" href="{{ config.ASSETS_ROOT }}/css/volt.css" rel="stylesheet">
+
+    <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
+
+</head>
+<body>
+
+<header class="header-global">
+    <nav id="navbar-main" aria-label="Primary navigation"
+         class="navbar navbar-main navbar-expand-lg navbar-theme-primary pt-4 navbar-dark">
+        <div class="container position-relative">
+            <div class="d-flex align-items-center ms-auto">
+                <a href="{{ url_for('authentication_blueprint.logout') }}"
+                   class="btn btn-outline-white d-inline-flex align-items-center me-md-3">
+                    <svg class="icon icon-xxs me-2" fill="none" stroke="currentColor"
+                         viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                    </svg>
+                    Logout
+                </a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+
+    <!-- Hero -->
+    <section class="section-header overflow-hidden pt-7 pt-lg-8 pb-9 pb-lg-12 bg-primary text-white">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h1 class="fw-bolder">Welcome to Taste Craft</h1>
+                    <h2 class="lead fw-normal text-muted mb-5">
+                        Unleash Your Inner Chef with AI-Powered Recipes
+                    </h2>
+                    <!-- Button Modal -->
+                    <div class="d-flex align-items-center justify-content-center mb-5">
+                        <a href="/dashboard" class="btn btn-secondary d-inline-flex align-items-center me-4">
+                            <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 512 512"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M156.6 384.9L125.7 354c-8.5-8.5-11.5-20.8-7.7-32.2c3-8.9 7-20.5 11.8-33.8L24 288c-8.6 0-16.6-4.6-20.9-12.1s-4.2-16.7 .2-24.1l52.5-88.5c13-21.9 36.5-35.3 61.9-35.3l82.3 0c2.4-4 4.8-7.7 7.2-11.3C289.1-4.1 411.1-8.1 483.9 5.3c11.6 2.1 20.6 11.2 22.8 22.8c13.4 72.9 9.3 194.8-111.4 276.7c-3.5 2.4-7.3 4.8-11.3 7.2v82.3c0 25.4-13.4 49-35.3 61.9l-88.5 52.5c-7.4 4.4-16.6 4.5-24.1 .2s-12.1-12.2-12.1-20.9V380.8c-14.1 4.9-26.4 8.9-35.7 11.9c-11.2 3.6-23.4 .5-31.8-7.8zM384 168a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"
+                                      clip-rule="evenodd"/>
+                            </svg>
+                            Start
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <figure class="position-absolute bottom-0 left-0 w-100 d-none d-md-block mb-n2">
+            <svg class="home-pattern" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 185.4">
+                <path d="M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z"></path>
+            </svg>
+        </figure>
+    </section>
+    <div class="section pt-0">
+        <div class="container mt-n10 mt-lg-n12 z-2">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <img src="{{ config.ASSETS_ROOT }}/img/style/index.png" alt="Style">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer class="footer py-6 bg-gray-800 text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col mb-md-0">
+                <div class="d-flex justify-content-center">
+                    <img src="{{ config.ASSETS_ROOT }}/img/icons/logo.png" height="100" class="mb-4"
+                         alt="Logo">
+                </div>
+                <div class="d-flex text-center justify-content-center align-items-center" role="contentinfo">
+                    <p class="fw-normal font-small mb-0">
+                        &copy; <a target="_blank"
+                                  href="https://transcendence.industries">Transcendence Industries</a> - Template by
+                        <a target="_blank"
+                           href="https://appseed.us/product/volt-dashboard/flask/">Themesberg & AppSeed</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+{% include 'includes/scripts.html' %}
+
+</body>
+</html>

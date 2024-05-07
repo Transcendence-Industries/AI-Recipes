@@ -1,0 +1,117 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
+    <div class="d-block mb-4 mb-md-0">
+        {% if recipe['is_favorite'] and recipe['favorite_list'] %}
+        <h2 class="h2">{{ recipe['general'].name }} ({{ recipe['favorite_list'] }})</h2>
+        {% else %}
+        <h2 class="h2">{{ recipe['general'].name }}</h2>
+        {% endif %}
+    </div>
+    <div class="btn-toolbar mb-2 mb-md-0">
+
+        <form action="/dashboard/detail/{{ recipe['general'].id }}" method="post">
+            {% if recipe['is_favorite'] %}
+            <button type="button" class="btn btn-tertiary dropdown-toggle" id="dropdownMenuOffset"
+                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
+                List
+            </button>
+            <ul class="dropdown-menu py-0" aria-labelledby="dropdownMenuOffset">
+                <li>
+                    <button class="dropdown-item rounded-top" type="submit" name="action" value="clear_list">
+                        None
+                    </button>
+                </li>
+                {% for list in favorite_lists %}
+                <li>
+                    <button class="dropdown-item" type="submit" name="action" value="change_list_{{ list.id }}">
+                        {{ list.name }}
+                    </button>
+                </li>
+                {% endfor %}
+            </ul>
+
+            <button class="btn btn-danger" type="submit" name="action" value="remove_favorite">Delete</button>
+            {% else %}
+            <button class="btn btn-secondary" type="submit" name="action" value="add_favorite">Favorite</button>
+            {% endif %}
+        </form>
+
+        <div class="btn-group ms-2 ms-lg-3">
+            <a href="https://{{ recipe['general'].link }}" target="_blank"
+               class="btn btn-sm btn-outline-gray-800 d-inline-flex align-items-center">
+                <svg class="icon icon-xs me-2" stroke="currentColor" viewBox="0 0 640 512"
+                     xmlns="http://www.w3.org/2000/svg">
+                    <path d="M579.8 267.7c56.5-56.5 56.5-148 0-204.5c-50-50-128.8-56.5-186.3-15.4l-1.6 1.1c-14.4 10.3-17.7 30.3-7.4 44.6s30.3 17.7 44.6 7.4l1.6-1.1c32.1-22.9 76-19.3 103.8 8.6c31.5 31.5 31.5 82.5 0 114L422.3 334.8c-31.5 31.5-82.5 31.5-114 0c-27.9-27.9-31.5-71.8-8.6-103.8l1.1-1.6c10.3-14.4 6.9-34.4-7.4-44.6s-34.4-6.9-44.6 7.4l-1.1 1.6C206.5 251.2 213 330 263 380c56.5 56.5 148 56.5 204.5 0L579.8 267.7zM60.2 244.3c-56.5 56.5-56.5 148 0 204.5c50 50 128.8 56.5 186.3 15.4l1.6-1.1c14.4-10.3 17.7-30.3 7.4-44.6s-30.3-17.7-44.6-7.4l-1.6 1.1c-32.1 22.9-76 19.3-103.8-8.6C74 372 74 321 105.5 289.5L217.7 177.2c31.5-31.5 82.5-31.5 114 0c27.9 27.9 31.5 71.8 8.6 103.9l-1.1 1.6c-10.3 14.4-6.9 34.4 7.4 44.6s34.4 6.9 44.6-7.4l1.1-1.6C433.5 260.8 427 182 377 132c-56.5-56.5-148-56.5-204.5 0L60.2 244.3z"/>
+                </svg>
+                Show original
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 col-xl-8">
+        <div class="card card-body border-0 shadow mb-4 mb-xl-0">
+            <h4 class="h3 mb-4">Instructions</h4>
+            <ul class="list-group list-group-flush">
+
+                {% for direction in recipe['directions'] %}
+
+                <li class="list-group-item d-flex align-items-center justify-content-between px-0 border-bottom">
+                    <div>
+                        <h3 class="h6 mb-1">{{ direction.description }}</h3>
+                    </div>
+                    <div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="">
+                        </div>
+                    </div>
+                </li>
+
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-12 col-xl-4">
+        <div class="row">
+            <div class="col-12 mb-4">
+                <div class="card shadow border-0 text-center p-0">
+                    <div class="profile-cover rounded-top"
+                         data-background="{{ config.ASSETS_ROOT }}/img/style/detail.jpg"></div>
+                    <div class="card-body pb-5">
+                        <h4 class="h3">
+                            Ingredients
+                        </h4>
+                        <br/>
+                        <ul>
+
+                            {% for ingredient in recipe['ingredients'] %}
+                            {% if ingredient[0].amount and ingredient[0].unit %}
+                            <li>{{ ingredient[0].amount }} {{ ingredient[0].unit }} - {{ ingredient[1].name }}</li>
+                            {% else %}
+                            <li>{{ ingredient[1].name }}</li>
+                            {% endif %}
+                            {% endfor %}
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

@@ -1,0 +1,129 @@
+<nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
+    <a class="navbar-brand me-lg-5" href="#">
+        <img class="navbar-brand-dark" src="{{ config.ASSETS_ROOT }}/img/icons/logo.png" alt="Logo"/>
+        <img class="navbar-brand-light" src="{{ config.ASSETS_ROOT }}/img/icons/logo.png" alt="Logo"/>
+    </a>
+    <div class="d-flex align-items-center">
+        <button class="navbar-toggler d-lg-none collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
+
+<nav id="sidebarMenu" class="sidebar d-lg-block bg-gray-800 text-white collapse" data-simplebar>
+    <div class="sidebar-inner px-4 pt-3">
+        <div class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
+            <div class="d-flex align-items-center">
+                <div class="avatar-lg me-4">
+                    <img src="{{ config.ASSETS_ROOT }}/img/icons/profile.png"
+                         class="card-img-top rounded-circle border-white"
+                         alt="Bonnie Green">
+                </div>
+                <div class="d-block">
+                    <h2 class="h5 mb-3">{{ current_user.username }}</h2>
+                </div>
+            </div>
+            <div class="collapse-close d-md-none">
+                <a href="#sidebarMenu" data-bs-toggle="collapse"
+                   data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="true"
+                   aria-label="Toggle navigation">
+                    <svg class="icon icon-xs" fill="currentColor" viewBox="0 0 20 20"
+                         xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                              d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                              clip-rule="evenodd"></path>
+                    </svg>
+                </a>
+            </div>
+        </div>
+        <ul class="nav flex-column pt-3 pt-md-0">
+            <li class="nav-item">
+                <a href="/" class="nav-link d-flex align-items-center">
+                  <span class="sidebar-icon">
+                    <img src="{{ config.ASSETS_ROOT }}/img/icons/logo.png" height="20" width="20" alt="Logo">
+                  </span>
+                    <span class="mt-1 ms-1 sidebar-text">Introduction</span>
+                </a>
+            </li>
+            <li class="nav-item {% if 'inspiration' in segment %} active {% endif %}">
+                <a href="/dashboard/inspiration" class="nav-link">
+                  <span class="sidebar-icon">
+                      <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 384 512"
+                           xmlns="http://www.w3.org/2000/svg">
+                          <path d="M272 384c9.6-31.9 29.5-59.1 49.2-86.2l0 0c5.2-7.1 10.4-14.2 15.4-21.4c19.8-28.5 31.4-63 31.4-100.3C368 78.8 289.2 0 192 0S16 78.8 16 176c0 37.3 11.6 71.9 31.4 100.3c5 7.2 10.2 14.3 15.4 21.4l0 0c19.8 27.1 39.7 54.4 49.2 86.2H272zM192 512c44.2 0 80-35.8 80-80V416H112v16c0 44.2 35.8 80 80 80zM112 176c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-61.9 50.1-112 112-112c8.8 0 16 7.2 16 16s-7.2 16-16 16c-44.2 0-80 35.8-80 80z"/>
+                      </svg>
+                  </span>
+                    <span class="sidebar-text">Inspiration</span>
+                </a>
+            </li>
+            <li class="nav-item {% if 'favorites' in segment %} active {% endif %}">
+                <a href="/dashboard/favorites" class="nav-link">
+                  <span class="sidebar-icon">
+                      <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 576 512"
+                           xmlns="http://www.w3.org/2000/svg">
+                          <path fill-rule="evenodd"
+                                d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"
+                                clip-rule="evenodd"/>
+                      </svg>
+                  </span>
+                    <span class="sidebar-text">Favorites</span>
+                </a>
+            </li>
+            <li class="nav-item {% if 'favorite-list' in segment %} active {% endif %}">
+                <span class="nav-link  collapsed  d-flex justify-content-between align-items-center"
+                      data-bs-toggle="collapse" data-bs-target="#submenu-app">
+                  <span>
+                    <a href="/dashboard/collections">
+                        <span class="sidebar-icon">
+                            <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 512 512"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                      d="M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z"
+                                      clip-rule="evenodd"/>
+                            </svg>
+                        </span>
+                        <span class="sidebar-text">Collections</span>
+                    </a>
+                  </span>
+                  <span class="link-arrow">
+                    <svg class="icon icon-sm" fill="currentColor" viewBox="0 0 20 20"
+                         xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd"
+                                                                  d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+                                                                  clip-rule="evenodd"></path></svg>
+                  </span>
+                </span>
+
+                {% for list in favorite_lists %}
+
+                <div class="multi-level collapse"
+                     role="list" id="submenu-app" aria-expanded="false">
+                    <ul class="flex-column nav">
+                        <li class="nav-item {% if 'favorite-list-' + (list.id|string) in segment %} active {% endif %}">
+                            <a class="nav-link" href="/dashboard/favorite-list/{{ list.id }}">
+                                <span class="sidebar-text">{{ list.name }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                {% endfor %}
+
+            </li>
+            <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
+            <li class="nav-item">
+                <a href="{{ url_for('authentication_blueprint.logout') }}" class="nav-link">
+                    <span class="sidebar-icon">
+                        <svg class="icon icon-xs text-danger me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                        </svg> 
+                    </span>
+                    <span class="sidebar-text">Logout</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

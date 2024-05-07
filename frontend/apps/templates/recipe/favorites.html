@@ -1,0 +1,65 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4"
+     xmlns="http://www.w3.org/1999/html">
+    <div class="d-block mb-4 mb-md-0">
+        <h2 class="h2">Favorites</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12 col-xl-8">
+        <div class="card card-body border-0 shadow mb-4 mb-xl-0">
+            <h4 class="h3 mb-4">Uncategorized Recipes</h4>
+            <ul class="list-group list-group-flush">
+
+                {% for recipe in recipes %}
+
+                <li class="list-group-item d-flex align-items-center justify-content-between px-0 border-bottom">
+                    <form action="/dashboard/favorites" method="post">
+                        <div>
+                            <h3 class="h6 mb-1">{{ recipe.name }}</h3>
+                        </div>
+                        <div>
+                            <a href="/dashboard/detail/{{ recipe.id }}">
+                                <button class="btn btn-secondary" type="button">Show</button>
+                            </a>
+                            <button type="button" class="btn btn-tertiary dropdown-toggle" id="dropdownMenuOffset"
+                                    data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="10,20">
+                                List
+                            </button>
+                            <ul class="dropdown-menu py-0" aria-labelledby="dropdownMenuOffset">
+                                {% for list in favorite_lists %}
+                                <li>
+                                    <button class="dropdown-item" type="submit" name="action"
+                                            value="change_list_{{ list.id }}_{{ recipe.id }}">
+                                        {{ list.name }}
+                                    </button>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                            <button class="btn btn-danger" type="submit" name="action"
+                                    value="remove_favorite_{{ recipe.id }}">Delete
+                            </button>
+                        </div>
+                    </form>
+                </li>
+
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}
